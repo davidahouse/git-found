@@ -1,0 +1,21 @@
+pullrequests:
+  tasks:
+    - id: pr-standards
+      config:
+        prMilestoneCheck: true
+        prBodyCheck: true
+        prIssueCheck: true
+    - id: lint-nodejs
+    - id: unit-tests-nodejs
+pullrequestedit:
+  tasks:
+    - id: pr-standards
+      config:
+        prMilestoneCheck: true
+        prBodyCheck: true
+        prIssueCheck: true
+releases:
+  published:
+    tasks:
+      - id: release-notes
+      - id: npm-publish
