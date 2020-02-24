@@ -1,6 +1,6 @@
 ## git-found
 
-[![npm (scoped)](https://img.shields.io/npm/v/@davidahouse/git-found.svg)](https://www.npmjs.com/package/@davidahouse/git-found)
+[![npm (scoped)](https://img.shields.io/npm/v/git-found.svg)](https://www.npmjs.com/package/git-found)
 
 A command line tool for finding & updating local branches from the git origin
 
