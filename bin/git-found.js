@@ -11,7 +11,7 @@ var pkginfo = require("pkginfo")(module);
 const conf = require("rc")("git-found", {
   // defaults
   workingFolder: ".",
-  defaultBranches: "development,master,release",
+  defaultBranches: "development,master,release,main",
   ignoreFolders: ".git,DerivedData,build,node_modules"
 });
 

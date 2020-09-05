@@ -1,7 +1,7 @@
 {
   "name": "git-found",
   "main": "bin/git-found.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A command line tool for finding & updating local branches from the git origin",
   "license": "MIT",
   "repository": "davidahouse/git-found",
