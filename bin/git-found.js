@@ -8,7 +8,7 @@ const EventEmitter = require("events");
 const path = require("path");
 
 var pkginfo = require("pkginfo")(module);
-const conf = require("rc")("git-found", {
+const conf = require("rc-house")("git-found", {
   // defaults
   workingFolder: ".",
   defaultBranches: "development,master,release,main",
@@ -16,7 +16,7 @@ const conf = require("rc")("git-found", {
 });
 
 const eventEmitter = new EventEmitter();
-const git = require("simple-git/promise");
+const git = require("simple-git");
 const defaultBranches = conf.defaultBranches.split(",");
 const ignoreFolders = conf.ignoreFolders.split(",");
 
@@ -28,17 +28,17 @@ console.log(chalk.green(module.exports.version));
 console.log(chalk.green("searching for repositories in " + conf.workingFolder));
 
 const q = new Queue(
-  function(iteration, cb) {
+  function (iteration, cb) {
     getStatus(iteration.folder, cb);
   },
   { concurrent: 3 }
 );
 
-q.on("drain", function() {
+q.on("drain", function () {
   eventEmitter.emit("finished");
 });
 
-eventEmitter.on("finished", function(result) {
+eventEmitter.on("finished", function (result) {
   var stats = q.getStats();
   console.log(
     chalk.green("Finished checking " + stats.total + " repositories...")
@@ -55,9 +55,8 @@ findRepos(conf.workingFolder);
 async function getStatus(folder, cb) {
   try {
     await git(folder)
-      .silent(true)
       .fetch();
-  } catch (e) {}
+  } catch (e) { }
   const result = await git(folder).status();
   const basename = folder.replace(conf.workingFolder, "");
   if (
@@ -68,7 +67,6 @@ async function getStatus(folder, cb) {
   ) {
     try {
       await git(folder)
-        .silent(true)
         .pull();
       console.log(chalk.yellow("↩️ " + basename + "(" + result.current + ")"));
     } catch (e) {
@@ -89,7 +87,7 @@ function findRepos(folder) {
   if (fs.existsSync(folder + "/.git")) {
     q.push({ folder: folder });
   } else {
-    fs.readdirSync(folder).filter(function(file) {
+    fs.readdirSync(folder).filter(function (file) {
       if (fs.statSync(folder + "/" + file).isDirectory()) {
         findRepos(folder + "/" + file);
       }
