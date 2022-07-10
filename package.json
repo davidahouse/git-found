@@ -17,7 +17,7 @@
     "figlet": "^1.5.0",
     "pkginfo": "^0.4.1",
     "rc-house": "^1.4.0",
-    "simple-git": "3.7.1"
+    "simple-git": "3.8.0"
   },
   "devDependencies": {
     "eslint": "^8.12.0",
