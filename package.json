@@ -10,7 +10,7 @@
     "git-found": "bin/git-found.js"
   },
   "dependencies": {
-    "better-queue": "^3.8.10",
+    "better-queue": "^3.8.11",
     "chalk": "^2.4.2",
     "clear": "^0.1.0",
     "commander": "^2.19.0",
